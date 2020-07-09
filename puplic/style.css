@@ -1,0 +1,225 @@
+  *{
+    margin: 0;
+    padding: 0;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+body{
+    background-color: #181719;
+    font-family: 'Poppins', sans-serif;
+    background: #fff;
+}
+.container {
+    margin: 20px 100px;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    grid-template-rows: auto;
+    grid-gap:10px;
+    grid-template-areas: 
+    "header header header"
+    "main main aside"
+    "footer footer footer";
+  }
+
+   /* Typeography General*/
+   h1 {font-size: 3em;}
+   h2{text-transform: capitalize;margin: 10px 0;}
+   h3{
+     text-transform: capitalize;
+     font-weight: 400;
+     font-style: italic;
+     margin: 15px 0;
+    }
+   h1,h2,h3{ font-family: 'Playfair Display', serif;}
+   p {line-height: 1.3em;color: #7a7878;}
+
+
+  /*style header*/
+  header{
+    grid-area: header;
+    margin-bottom: 20px;
+  }
+  header h1{
+    text-transform: capitalize;
+    margin-bottom: 15px;
+  }
+  header .info{
+    display: flex;
+    align-items: start;
+  }
+  header span{
+    transform: rotate(90deg);
+    vertical-align: center;
+    color: #C4C4C4;
+}
+  header p{
+    margin-bottom: 30px;
+    width: 50%;
+    padding-left: 5px;
+    font-style: italic;
+  }
+
+  
+header img{
+  max-width: 100%;
+   height: auto;
+   border-radius: 10px;
+   
+  }
+
+
+  /*style main*/
+  main{
+grid-area: main;
+  }
+  .ingredients{
+    display: flex;
+    flex-direction: column;
+  }
+
+label{
+  margin: 9px 0;
+display: grid;
+grid-template-columns: repeat(2,auto);
+grid-template-rows: auto;
+align-items: start;
+justify-content: start;
+}
+  label input {
+    display: none; /* Hide the default checkbox */
+  }
+  /* Style the artificial checkbox */
+label > span {
+  height: 20px;
+  width: 20px;
+  border: 1px solid #928d8d;
+  display: inline-block;
+  position: relative;
+  border-radius: 5px;
+}
+
+/* Style its checked state...with a ticked icon */
+[type=checkbox]:checked + span:before {
+  content: '\2714';
+  position: absolute;
+  top: -4px;
+  left: 2px;
+  color:#F2994A;
+}
+
+label p {margin-left: 10px;color: #333;line-height: 1.4;}
+label .style-pargh{font-weight: 500;font-style: italic;}
+
+/* style instructions*/
+.instructions ol{
+  list-style: none;
+  counter-reset: my-awesome-counter;
+}
+.instructions li{
+  position: relative;
+  margin-left: 40px;
+  padding: 20px 0;
+  counter-increment: my-awesome-counter;
+  line-height: 1.5;
+}
+.instructions li::before{
+  position: absolute;
+  left: -40px;
+  content: counter(my-awesome-counter) ;
+  background-color: #F2994A;
+  color: #fff;
+  width: 30px;
+  height: 30px;
+  font-weight: bold;
+  text-align: center;
+  line-height: 30px;
+  border-radius: 6px;
+}
+
+.source{
+  color:#DBDBDB;
+}
+.source a{
+  text-decoration: none;
+  color: #DBDBDB;
+}
+  /*style aside*/
+  aside{
+    grid-area: aside;
+    justify-self: self-end;
+    align-self: start;
+    padding: 20px 30px;
+    margin-top: 40px;
+    border-radius: 10px;
+    -webkit-box-shadow: 0px 1px 9px 4px #C4C4C4; 
+    box-shadow:1px 7px 7px -3px #C4C4C4;
+  }
+  aside .recipe-info:first-of-type > span{
+color: #F2994A;
+  }
+  aside .recipe-info:first-of-type .recipe-prep span:not(:first-of-type){
+    color: #F2994A; 
+  }
+.recipe-info{
+  display: flex;
+  align-items: center;
+  padding: 10px 0;
+}
+.recipe-info > span{
+margin-right: 12px;
+}
+.recipe-info span{
+  display: block;
+}
+.recipe-prep span:first-of-type{
+  text-transform: uppercase;
+  color: #a29c9c;
+  font-size: 0.8em;
+}
+  
+  /*style footer*/
+  footer{
+    grid-area: footer;
+    text-align: center;
+    margin: 40px 0 0 10px;
+    color: #a29c9c;
+    font-size: 0.8em;
+  }
+  @media screen and (max-width:768px){
+    .container{
+      margin: 12px;
+      grid-template-areas: 
+      "header header header"
+      "aside aside aside"
+      "main main main"
+      "footer footer footer";
+    }
+    header h1{
+      font-size:1.6em;
+    }
+    header p{
+      width: 100%;
+    }
+  aside{
+    justify-self: center;
+    margin-top: 10px;
+    padding: 10px;
+    grid-gap: 4px;
+    width: 100%;
+    font-size: 0.9em;
+    display: grid;
+    grid-template-columns:repeat(3,1fr) ;
+    grid-template-rows: repeat(2,auto);
+}
+ aside .recipe-info:first-of-type{
+   grid-column: 1/4;
+ } 
+ .source a{
+  display: block;
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+ }
+  }
